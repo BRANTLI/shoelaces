@@ -25,7 +25,7 @@ jobs:
       run: go build -v ./...
 
     - name: Create release on GitHub
-      uses: brantli/shoelaces@v4
+      uses: brantli/shoelaces@master
       with:
         args: release
       env:
