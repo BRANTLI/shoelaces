@@ -24,12 +24,9 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-    - name: Run GoReleaser
-        uses: BRANTLI/shoelaces@master
-        with:
-          version: latest
-          args: release --rm-dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
-    - name: Test
-      run: go test -v ./...
+    - name: Create release on GitHub
+      uses: actions/setup-go@v4
+      with:
+        args: release
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
